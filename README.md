@@ -1,4 +1,4 @@
-#I3 Layout Save/Open
+#i3 Layout Save/Open
 
 These scripts can be used to save a layout or open a saved layout in i3. To save a workspace layout, use as follows:
 
