@@ -4,10 +4,11 @@
 import re
 import sys
 
+from os.path import expanduser
 from subprocess import call, check_output, DEVNULL, STDOUT
 
 
-LAYOUTS_DIR = '/home/daryl/.config/i3/layouts/'
+LAYOUTS_DIR = expanduser('~') + '/.config/i3/layouts/'
 BIN_DIR = LAYOUTS_DIR + 'bin/'
 
 
