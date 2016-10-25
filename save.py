@@ -9,7 +9,7 @@ from subprocess import call, check_output, DEVNULL, STDOUT
 
 
 LAYOUTS_DIR = expanduser('~') + '/.config/i3/layouts/'
-BIN_DIR = LAYOUTS_DIR + 'bin/'
+BIN_DIR = LAYOUTS_DIR + 'bin/'  # add this to PATH
 
 
 def get_layout(workspace):
