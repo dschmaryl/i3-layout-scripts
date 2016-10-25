@@ -4,7 +4,7 @@
 import re
 import sys
 
-from os.path import expanduser
+from os.path import abspath, expanduser
 from subprocess import call, check_output, DEVNULL, STDOUT
 
 
@@ -57,7 +57,8 @@ def save_shortcut(layout_name):
     if call(['which', layout_name], stdout=DEVNULL, stderr=STDOUT) == 1:
         with open(BIN_DIR + layout_name, 'w') as f:
             f.write("#!/bin/bash\n")
-            f.write("open " + layout_name + " $1\n")
+            f.write(abspath(__file__).replace('save', 'open') + ' '
+                    + layout_name + " $1\n")
         call(['chmod', '+x', BIN_DIR + layout_name])
     else:
         print(layout_name, 'already in path, skipping bin shortcut')
