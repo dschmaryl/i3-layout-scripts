@@ -8,7 +8,7 @@ from subprocess import call, check_output, DEVNULL, STDOUT
 
 
 LAYOUTS_DIR = '/home/daryl/.config/i3/layouts/'
-BIN_DIR = '/home/daryl/bin/'
+BIN_DIR = LAYOUTS_DIR + 'bin/'
 
 
 def get_layout(workspace):
@@ -57,7 +57,7 @@ def save_shortcut(layout_name):
         with open(BIN_DIR + layout_name, 'w') as f:
             f.write("#!/bin/bash\n")
             f.write("open " + layout_name + " $1\n")
-        check_output(['chmod', '+x', BIN_DIR + layout_name])
+        call(['chmod', '+x', BIN_DIR + layout_name])
     else:
         print(layout_name, 'already in path, skipping bin shortcut')
 
