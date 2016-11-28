@@ -6,7 +6,7 @@ import subprocess
 import sys
 
 
-LAYOUTS_DIR = '/home/daryl/.config/i3/layouts/'
+LAYOUTS_DIR = expanduser('~') + '/.config/i3/layouts/'
 
 
 def open_layout(workspace_name, workspace_number=None):
