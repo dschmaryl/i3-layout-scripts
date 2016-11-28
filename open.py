@@ -16,7 +16,7 @@ def open_layout(workspace_name, workspace_number=None):
     if not os.path.isfile(layout_file):
         print('layout not found: ' + workspace_name)
         return
-    elif not os.path.isfile(executables_file):
+    if not os.path.isfile(executables_file):
         print('executable not found: ' + workspace_name)
         return
 
@@ -40,4 +40,4 @@ if __name__ == '__main__':
         open_layout(workspace_name)
 
     else:
-        exit("usage: open 'layout_name' 'workspace'")
+        exit("usage: open LAYOUT_NAME WORKSPACE_NUMBER")

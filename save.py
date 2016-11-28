@@ -66,7 +66,7 @@ def save_shortcut(layout_name):
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        exit("usage: save 'workspace' 'layout_name'")
+        exit("usage: save WORKSPACE_NUMBER LAYOUT_NAME")
 
     workspace = sys.argv[-2]
     if int(workspace) not in range(1, 11):
