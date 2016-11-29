@@ -21,7 +21,7 @@ def remove(layout_name):
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("usage: remove [layout_name]")
+        print("usage: remove LAYOUT_NAME")
     else:
         layout_name = sys.argv[-1]
         layouts = get_layouts()
