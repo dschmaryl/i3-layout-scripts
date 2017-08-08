@@ -12,8 +12,8 @@ LAYOUTS_DIR = expanduser('~') + '/.config/i3/layouts/'
 BIN_DIR = LAYOUTS_DIR + 'bin/'  # make sure to add this folder to PATH
 
 
-def get_layout(workspace):
-    i3_save_tree = ['i3-save-tree', '--workspace', workspace]
+def get_layout(workspace_number):
+    i3_save_tree = ['i3-save-tree', '--workspace', workspace_number]
     return check_output(i3_save_tree).decode('utf-8').split("\n")
 
 
@@ -68,12 +68,13 @@ if __name__ == '__main__':
     if len(sys.argv) != 3:
         exit("usage: save WORKSPACE_NUMBER LAYOUT_NAME")
 
-    workspace = sys.argv[-2]
-    if int(workspace) not in range(1, 11):
-        exit(workspace + ' is not a valid workspace')
+    workspace_number = sys.argv[-2]
+    try:
+        if int(workspace_number) not in range(1, 11):
+            raise ValueError
+    except ValueError:
+        exit(workspace_number + ' is not a valid workspace')
 
     layout_name = sys.argv[-1]
-
-    layout = get_layout(workspace)
-    save_layout(layout, layout_name)
+    save_layout(get_layout(workspace_number), layout_name)
     save_shortcut(layout_name)

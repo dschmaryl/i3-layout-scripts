@@ -27,18 +27,13 @@ def open_layout(layout_name, workspace_number=None):
     check_output([executables_file])
 
 
-def invalid_workspace(workspace_number):
-    try:
-        if int(workspace_number) not in range(1, 11):
-            raise ValueError
-    except ValueError:
-        return True
-
-
 if __name__ == '__main__':
     if len(argv) == 3:
         workspace_number = argv[-1]
-        if invalid_workspace(workspace_number):
+        try:
+            if int(workspace_number) not in range(1, 11):
+                raise ValueError
+        except ValueError:
             exit(workspace_number + ' is not a valid workspace')
 
         open_layout(argv[-2], workspace_number)
