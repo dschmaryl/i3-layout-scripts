@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from os.path import expanduser, isfile
+from os.path import isfile
 from subprocess import check_output
 from sys import argv
 
-
-LAYOUTS_DIR = expanduser('~') + '/.config/i3/layouts/'
+from config import LAYOUTS_DIR
 
 
 def open_layout(layout_name, workspace_number=None):

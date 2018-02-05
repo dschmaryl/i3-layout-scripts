@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import re
-import sys
-
-from os.path import abspath, expanduser
+from os.path import abspath
+from re import findall
 from subprocess import call, check_output, DEVNULL, STDOUT
+from sys import argv
 
-
-LAYOUTS_DIR = expanduser('~') + '/.config/i3/layouts/'
-BIN_DIR = LAYOUTS_DIR + 'bin/'  # make sure to add this folder to PATH
+from config import LAYOUTS_DIR, BIN_DIR
 
 
 def get_layout(workspace_number):
@@ -32,7 +29,7 @@ def save_layout(layout, layout_name):
                     f.write(line.replace("// ", '') + "\n")
                 if line.find('// "instance":') != -1:
                     f.write(line.replace("// ", '').rstrip(',') + "\n")
-                    executables.extend(re.findall(r'\^(.+)\$', line))
+                    executables.extend(findall(r'\^(.+)\$', line))
             else:
                 f.write(line + "\n")
 
@@ -65,16 +62,16 @@ def save_shortcut(layout_name):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
+    if len(argv) != 3:
         exit("usage: save WORKSPACE_NUMBER LAYOUT_NAME")
 
-    workspace_number = sys.argv[-2]
+    workspace_number = argv[-2]
     try:
         if int(workspace_number) not in range(1, 11):
             raise ValueError
     except ValueError:
         exit(workspace_number + ' is not a valid workspace')
 
-    layout_name = sys.argv[-1]
+    layout_name = argv[-1]
     save_layout(get_layout(workspace_number), layout_name)
     save_shortcut(layout_name)

@@ -1,32 +1,30 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import os
-import sys
+from os import listdir, remove
+from sys import argv
 
-
-LAYOUTS_DIR = os.path.expanduser('~') + '/.config/i3/layouts/'
-BIN_DIR = LAYOUTS_DIR + 'bin/'
+from config import LAYOUTS_DIR, BIN_DIR
 
 
 def get_layouts():
-    return sorted([f for f in os.listdir(LAYOUTS_DIR) if '.json' not in f])
+    return sorted([f for f in listdir(LAYOUTS_DIR) if '.json' not in f])
 
 
-def remove(layout_name):
-    os.remove(LAYOUTS_DIR + layout_name)
-    os.remove(LAYOUTS_DIR + layout_name + '.json')
-    os.remove(BIN_DIR + layout_name)
+def remove_layout(layout_name):
+    remove(LAYOUTS_DIR + layout_name)
+    remove(LAYOUTS_DIR + layout_name + '.json')
+    remove(BIN_DIR + layout_name)
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
+    if len(argv) != 2:
         print("usage: remove LAYOUT_NAME")
     else:
-        layout_name = sys.argv[-1]
+        layout_name = argv[-1]
         layouts = get_layouts()
         if layout_name in layouts:
-            remove(layout_name)
+            remove_layout(layout_name)
             print("layout '" + layout_name + "' removed")
         else:
             print("no layout named '" + layout_name + "'")
