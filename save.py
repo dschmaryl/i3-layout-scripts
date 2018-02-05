@@ -49,13 +49,13 @@ def save_layout(layout, layout_name):
 
 
 def save_shortcut(layout_name):
-    # create a shortcut in ~/bin instead of having to type 'open layout'.
+    # create a shortcut in BIN_DIR instead of having to type 'open layout'.
     # first check to make sure there isn't already a program with that name.
     if call(['which', layout_name], stdout=DEVNULL, stderr=STDOUT) == 1:
         with open(BIN_DIR + layout_name, 'w') as f:
             f.write("#!/bin/bash\n")
-            f.write(abspath(__file__).replace('save', 'open') + ' '
-                    + layout_name + " $1\n")
+            open_py = abspath(__file__).replace('save.py', 'open.py')
+            f.write('python3 ' + open_py + ' ' + layout_name + " $1\n")
         call(['chmod', '+x', BIN_DIR + layout_name])
     else:
         print(layout_name, 'already in path, skipping bin shortcut')
