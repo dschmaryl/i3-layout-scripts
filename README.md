@@ -2,11 +2,11 @@
 
 These scripts can be used to save a layout or open a saved layout in i3. To save a workspace layout, use as follows:
 
-$ python3 save.py WORKSPACE LAYOUT
+$ python3 save.py WORKSPACE_NUMBER LAYOUT_NAME
 
 I prefer to use an alias to shorten this to just 'save [args]'. To open a saved layout, use:
 
-$ python3 open.py LAYOUT [WORKSPACE]
+$ python3 open.py LAYOUT_NAME [WORKSPACE_NUMBER]
 
 If a workspace number is not specified then the layout will open in the current workspace.
 
