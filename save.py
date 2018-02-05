@@ -26,8 +26,8 @@ def save_layout(layout, layout_name):
         # remove comments inserted by i3-save-tree
         for line in layout:
             if line.find("//") != -1:
-                # only save class and instance lines, otherwise just
-                # discard the line since it's unnecessary.
+                # only save class and instance lines, otherwise just discard
+                # the line since it is unnecessary.
                 if line.find('// "class":') != -1:
                     f.write(line.replace("// ", '') + "\n")
                 if line.find('// "instance":') != -1:
