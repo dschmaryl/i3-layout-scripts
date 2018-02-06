@@ -1,6 +1,6 @@
 # i3 Layout Save/Open
 
-These scripts can be used to save a layout or open a saved layout in i3. To save a workspace layout, use as follows:
+These scripts can be used to save a layout or open a saved layout in i3. Note: the perl-anyevent-i3 package needs to be installed. To save a workspace layout, use as follows:
 
 $ python3 save.py WORKSPACE_NUMBER LAYOUT_NAME
 
