@@ -64,7 +64,7 @@ def save_shortcut(layout_name):
 
 
 if __name__ == '__main__':
-    if len(argv) < 2 or len(argv) > 3 :
+    if len(argv) < 2 or len(argv) > 3:
         exit("usage: save [WORKSPACE_NUMBER] LAYOUT_NAME")
 
     if len(argv) == 3:
