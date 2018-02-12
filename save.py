@@ -9,8 +9,10 @@ from sys import argv
 from config import LAYOUTS_DIR, BIN_DIR
 
 
-def get_layout(workspace_number):
-    i3_save_tree = ['i3-save-tree', '--workspace', workspace_number]
+def get_layout(workspace_number=None):
+    i3_save_tree = ['i3-save-tree']
+    if workspace_number is not None:
+        i3_save_tree.extend(['--workspace', workspace_number])
     return check_output(i3_save_tree).decode('utf-8').split("\n")
 
 
@@ -58,19 +60,22 @@ def save_shortcut(layout_name):
             f.write('python3 ' + open_py + ' ' + layout_name + " $1\n")
         call(['chmod', '+x', BIN_DIR + layout_name])
     else:
-        print(layout_name, 'already in path, skipping bin shortcut')
+        print("'%s' already in path, skipping bin shortcut" % layout_name)
 
 
 if __name__ == '__main__':
-    if len(argv) != 3:
-        exit("usage: save WORKSPACE_NUMBER LAYOUT_NAME")
+    if len(argv) < 2 or len(argv) > 3 :
+        exit("usage: save [WORKSPACE_NUMBER] LAYOUT_NAME")
 
-    workspace_number = argv[-2]
-    try:
-        if int(workspace_number) not in range(1, 11):
-            raise ValueError
-    except ValueError:
-        exit(workspace_number + ' is not a valid workspace')
+    if len(argv) == 3:
+        workspace_number = argv[-2]
+        try:
+            if int(workspace_number) not in range(1, 11):
+                raise ValueError
+        except ValueError:
+            exit("'%s' is not a valid workspace" % str(workspace_number))
+    else:
+        workspace_number = None
 
     layout_name = argv[-1]
     save_layout(get_layout(workspace_number), layout_name)
