@@ -14,4 +14,4 @@ To open a saved layout, use:
 
     python3 open.py LAYOUT_NAME [WORKSPACE_NUMBER]
 
-When a layout is saved, and if nothing else with the same name as the layout exists in your PATH, then a shortcut to open that layout is created to save some typing. These shortcuts are put in '~/.i3-layouts/bin' by default, so this folder needs to be added to your PATH. The easiest way to open a layout is to switch to the workspace where you want the layout to open and then enter the layout name in dmenu or whatever launcher you prefer.
+When a layout is saved, and if nothing else with the same name as the layout exists in your PATH, a shortcut to open that layout is created to save some typing. These shortcuts are put in '~/.i3-layouts/bin' by default, so this folder needs to be added to your PATH. The easiest way to open a saved layout is to switch to the workspace in which you want the layout to open and then enter the name of the layout in dmenu or whatever launcher you prefer.
