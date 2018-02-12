@@ -1,6 +1,8 @@
 # i3 Layout Save/Open
 
-These scripts can be used to save a layout or open a saved layout in i3. Note: the perl-anyevent-i3 package needs to be installed. To install:
+These scripts can be used to save layouts and open saved layouts in i3.
+
+To install:
 
     git clone https://github.com/dschmaryl/i3-layout-scripts
     cd i3-layout-scripts
