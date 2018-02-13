@@ -7,9 +7,19 @@ from subprocess import call, DEVNULL, STDOUT
 from config import LAYOUTS_DIR, BIN_DIR
 
 
-def check_i3_save_tree_command():
-    if call('i3-save-tree', stdout=DEVNULL, stderr=STDOUT) == 2:
-        raise Exception
+def check_commands():
+    print("Checking 'which i3-save-tree'...")
+    try:
+        which_command = 'which i3-save-tree'.split(' ')
+        if call(which_command, stdout=DEVNULL, stderr=STDOUT) == 1:
+            print("ERROR: 'i3-save-tree' command not found. Is i3 installed?")
+            return 1
+    except FileNotFoundError:
+        print("ERROR: 'which' command not found. Please install.")
+        return 1
+
+    print('Success.')
+    return 0
 
 
 def create_layouts_dirs():
@@ -29,15 +39,11 @@ def create_layouts_dirs():
 
 
 if __name__ == '__main__':
-    try:
-        print("Checking 'i3-save-tree' command...")
-        check_i3_save_tree_command()
-        print('Success.')
-    except Exception:
-        print("ERROR: 'i3-save-tree' command failed.")
-        print("Most likely, the 'perl-anyevent-i3' package is missing.")
+    # check to make sure both 'which' and 'i3-save-tree' are installed
+    if check_commands() == 1:
         exit(1)
 
-    answer = input("create dirs according to 'config.py'? (y)/n: ")
+    # create directories used to save layouts and shortcuts
+    answer = input("Create directories according to 'config.py'? [y]/n: ")
     if answer in ['', 'y', 'yes', 'Y']:
         create_layouts_dirs()
