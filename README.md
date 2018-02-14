@@ -7,15 +7,15 @@ To install:
     git clone https://github.com/dschmaryl/i3-layout-scripts
     cd i3-layout-scripts
 
-Edit 'config.py' if you would like to change the default directories in which layouts and program launchers will be saved. Then run:
+Edit 'config.py' if you would like to change the default directories in which layouts and program launchers will be saved. To create the directories and test, run 'install.py':
 
     python3 install.py
 
-To save a workspace layout, use as follows:
+To save a workspace layout, use the following command:
 
     python3 save.py [WORKSPACE_NUMBER] LAYOUT_NAME
 
-If a workspace_number is not specified, the current workspace is saved. I prefer to use a shell script to shorten this to 'save [args]'. An alias can be used, however it will not be available in dmenu since dmenu does not normally support shell aliases. My shortcut, which is named 'save' and sits in my home/bin folder, looks like:
+If a workspace number is not specified when saving or opening layouts, the current workspace is assumed. I prefer to use a shell script to shorten this to 'save [args]'. An alias can be used, however it will not be available in dmenu since dmenu does not normally support shell aliases. My shortcut, which is named 'save' and sits in my home/bin folder, looks like:
 
     python3 /path/to/i3-layout-scripts/save.py $1 $2
 
