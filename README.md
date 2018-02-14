@@ -1,6 +1,6 @@
 # i3 Layout Save/Open
 
-These scripts can be used to save layouts and open saved layouts in i3. For each layout, a bash script to launch the applications associated with layout is also created. Also included are 'list' and 'remove' scripts to manage saved layouts.
+These scripts can be used to save layouts and open saved layouts in i3. For each layout, a bash script to launch the applications associated with layout is also created. Also included in this project are 'list' and 'remove' scripts to manage saved layouts.
 
 To install:
 
