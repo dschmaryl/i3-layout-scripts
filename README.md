@@ -1,13 +1,13 @@
 # i3 Layout Save/Open
 
-These scripts can be used to save layouts and open saved layouts in i3.
+These scripts can be used to save layouts and open saved layouts in i3. For each layout, a bash script to launch the applications associated with layout is also created. Also included are 'list' and 'remove' scripts to manage saved layouts.
 
 To install:
 
     git clone https://github.com/dschmaryl/i3-layout-scripts
     cd i3-layout-scripts
 
-Edit 'config.py' if you would like to change the default dirs. Then run:
+Edit 'config.py' if you would like to change the default directories in which layouts and program launchers will be saved. Then run:
 
     python3 install.py
 
