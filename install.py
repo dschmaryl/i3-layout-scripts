@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
+from os import environ
 from pathlib import Path
 from subprocess import call, DEVNULL, STDOUT
 
@@ -25,17 +25,20 @@ def check_commands():
 def create_layouts_dirs():
     layouts_dir = Path(LAYOUTS_DIR)
     if layouts_dir.exists():
-        print('layouts dir already exists')
+        print('Layouts dir already exists')
     else:
         layouts_dir.mkdir()
-        print("created layouts dir at '%s'" % layouts_dir)
+        print("Created layouts dir at '%s'" % layouts_dir)
 
     bin_dir = Path(BIN_DIR)
     if bin_dir.exists():
-        print('bin dir already exists')
+        print('Bin dir already exists')
     else:
         bin_dir.mkdir()
-        print("created bin dir at '%s'" % bin_dir)
+        print("Created bin dir at '%s'" % bin_dir)
+
+    if environ['PATH'].find(BIN_DIR[:-1]) == -1:
+        print('Bin dir not currently in your PATH. Please add it')
 
 
 if __name__ == '__main__':
