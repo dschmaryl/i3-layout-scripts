@@ -5,7 +5,7 @@ from re import findall
 from subprocess import call, check_output, DEVNULL, STDOUT
 from sys import argv
 
-from config import LAYOUTS_DIR, BIN_DIR
+from config import CREATE_BIN_SHORTCUTS, BIN_DIR, LAYOUTS_DIR
 
 
 def get_layout(workspace_number=None):
@@ -78,4 +78,8 @@ if __name__ == '__main__':
 
     layout_name = argv[-1]
     save_layout(get_layout(workspace_number), layout_name)
-    save_shortcut(layout_name)
+
+    if CREATE_BIN_SHORTCUTS:
+        save_shortcut(layout_name)
+
+    print("layout '%s' saved" % layout_name)

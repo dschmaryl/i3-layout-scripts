@@ -3,7 +3,7 @@
 from os import listdir, remove
 from sys import argv
 
-from config import LAYOUTS_DIR, BIN_DIR
+from config import CREATE_BIN_SHORTCUTS, BIN_DIR, LAYOUTS_DIR
 
 
 def get_layouts():
@@ -13,7 +13,8 @@ def get_layouts():
 def remove_layout(layout_name):
     remove(LAYOUTS_DIR + layout_name)
     remove(LAYOUTS_DIR + layout_name + '.json')
-    remove(BIN_DIR + layout_name)
+    if CREATE_BIN_SHORTCUTS:
+        remove(BIN_DIR + layout_name)
 
 
 if __name__ == '__main__':
