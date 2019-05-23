@@ -24,4 +24,4 @@ if __name__ == '__main__':
     if len(argv) != 2:
         print("usage: remove LAYOUT_NAME")
     else:
-        remove_layout(layout_name)
+        remove_layout(argv[1])
