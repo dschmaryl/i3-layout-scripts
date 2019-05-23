@@ -5,13 +5,13 @@ from os import listdir
 from config import LAYOUTS_DIR
 
 
-layouts = sorted([f for f in listdir(LAYOUTS_DIR) if '.json' not in f])
+def get_layouts():
+    return sorted([f.split('.json')[0]
+                   for f in listdir(LAYOUTS_DIR) if '.json' in f])
 
-print('')
-for layout in layouts:
-    if layout == 'bin':
-        # don't list bin dir as layout
-        continue
-    else:
+
+if __name__ == '__main__':
+    print('')
+    for layout in get_layouts():
         print(layout)
-print('')
+    print('')

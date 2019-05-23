@@ -3,11 +3,8 @@
 from os import listdir, remove
 from sys import argv
 
+from list import get_layouts
 from config import CREATE_BIN_SHORTCUTS, BIN_DIR, LAYOUTS_DIR
-
-
-def get_layouts():
-    return sorted([f for f in listdir(LAYOUTS_DIR) if '.json' not in f])
 
 
 def remove_layout(layout_name):
